@@ -17,16 +17,16 @@
 
 #### First time user journey:
 
-> Open app
-> v
-> Splash screen asking user to drag folder to get MD files from / option to make one.
-> v
-> Show file selection screen with prompt to add new file
-> Show file preview screen with placeholder for no content state.
-> v
-> Create new file/select local file
-> v
-> Start editing
+> Open app <br>
+> v <br>
+> Splash screen asking user to drag folder to get MD files from / option to make one. <br>
+> v <br>
+> Show file selection screen with prompt to add new file <br>
+> Show file preview screen with placeholder for no content state. <br>
+> v <br>
+> Create new file/select local file <br>
+> v <br>
+> Start editing <br>
 
 based on: https://dribbble.com/shots/2583110-Content-Editor
 
