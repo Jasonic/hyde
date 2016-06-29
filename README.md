@@ -16,6 +16,21 @@
 - [ ] Formatting buttons -> B (adds two asterisks to the start and end of highlighted text)
 - [ ] Option to edit some default yaml fields like Title, Date, Categories ?
 
+#### Installing:
+
+Based on [bradstewart/electron-boilerplate-vue](https://github.com/bradstewart/electron-boilerplate-vue).
+
+```
+npm install
+npm start
+```
+
+#### Releasing
+
+```
+npm run release
+```
+
 #### First time user journey:
 
 > Open app <br>

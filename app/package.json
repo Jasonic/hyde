@@ -1,0 +1,8 @@
+{
+  "name": "hyde",
+  "productName": "Hyde",
+  "version": "0.1.0",
+  "description": "Hyde - A realtime markdown editor.",
+  "author": "Harry Parton <hello@harryparton.co.uk>",
+  "main": "background.js"
+}
