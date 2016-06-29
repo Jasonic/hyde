@@ -14,6 +14,7 @@
 - [ ] Settings for font style (serif/sans-serif)
 - [ ] Settings for font size
 - [ ] Formatting buttons -> B (adds two asterisks to the start and end of highlighted text)
+- [ ] Option to edit some default yaml fields like Title, Date, Categories ?
 
 #### First time user journey:
 
