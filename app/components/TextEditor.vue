@@ -1,9 +1,7 @@
 <template>
-    <div class="text-editor">
-        <div id="editor">
+  <div id="editor">
 
-        </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -19,7 +17,7 @@
 
       editor.getSession().setMode('ace/mode/markdown')
       editor.setTheme('ace/theme/ocean_dark')
-      editor.setValue(store.state.input)
+      editor.setValue(store.state.content)
 
       editor.setOptions({
         enableMultiselect: true,
@@ -32,7 +30,7 @@
 
       editor.getSession().on('change', function (e) {
         var str = editor.getValue()
-        store.updateInput(str)
+        store.setContent(str)
       })
     }
   }
@@ -51,11 +49,6 @@
     width: 100%;
     height: 100%;
     background: #233943;
-    border: none;
-    resize: none;
-    color: inherit;
-    font: inherit;
-    outline: none;
-    position: absolute;
+    padding-bottom: 45px;
   }
 </style>

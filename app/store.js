@@ -1,16 +1,22 @@
+
 var store = {
   state: {
-    input: '# Hello!'
+    content: '# Hello!',
+    currentFile: '/Users/hparton/Desktop/howdy.md',
+    currentDirectory: '/Users/hparton/Desktop',
+    fileExplorerOpen: false
   },
-  actionA: function () {
-    this.state.input = 'action A triggered'
+  setContent: function (str) {
+    this.state.content = str
   },
-  actionB: function () {
-    this.state.input = 'action B triggered'
+  setCurrentFile: function (path) {
+    this.state.currentFile = path
   },
-  updateInput: function (str) {
-    console.log('triggered')
-    this.state.input = str
+  setCurrentDirectory: function (path) {
+    this.state.currentDirectory = path
+  },
+  toggleFileExplorer: function () {
+    this.state.fileExplorerOpen = !this.state.fileExplorerOpen
   }
 }
 

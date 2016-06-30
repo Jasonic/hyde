@@ -1,5 +1,5 @@
 <template>
-  <div class="rendered markdown-body" v-html="state.input | marked"></div>
+  <div class="rendered markdown-body" v-html="state.content | marked"></div>
 </template>
 
 <script>
