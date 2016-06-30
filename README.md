@@ -16,6 +16,10 @@
 - [ ] Formatting buttons -> B (adds two asterisks to the start and end of highlighted text)
 - [ ] Option to edit some default yaml fields like Title, Date, Categories ?
 
+#### Todo:
+
+- [ ] Move dark-ocean theme out from the brace folder in node_modules into its own repo and publish on NPM
+
 #### Installing:
 
 Based on [bradstewart/electron-boilerplate-vue](https://github.com/bradstewart/electron-boilerplate-vue).

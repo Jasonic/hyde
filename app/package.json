@@ -4,5 +4,10 @@
   "version": "0.1.0",
   "description": "Hyde - A realtime markdown editor.",
   "author": "Harry Parton <hello@harryparton.co.uk>",
-  "main": "background.js"
+  "main": "background.js",
+  "dependencies": {
+    "brace": "^0.8.0",
+    "highlight.js": "^9.5.0",
+    "marked": "^0.3.5"
+  }
 }

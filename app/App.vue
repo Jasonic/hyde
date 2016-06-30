@@ -1,30 +1,66 @@
 <template>
     <div class="page-wrap">
-        <div class="text-editor"></div>
-        <div class="rendered"></div>
+        <text-editor></text-editor>
+        <preview-pane></preview-pane>
     </div>
 </template>
 
 <script>
-  import Hello from './components/Hello'
+  import TextEditor from './components/TextEditor'
+  import PreviewPane from './components/Preview'
+  import fs from 'fs'
 
   export default {
+    ready () {
+      console.log('SETUP')
+      var handler = document.getElementById('editor')
+
+      handler.ondragover = function () {
+        console.log('DRAGGING')
+        return false
+      }
+
+      handler.ondragleave = handler.ondragend = function () {
+        console.log('NOT DRAGGING')
+        return false
+      }
+
+      handler.ondrop = function (e) {
+        console.log('DROPPING')
+        e.preventDefault()
+        var file = e.dataTransfer.files[0]
+        console.log('File you dragged here is', file.path)
+
+        // This is just an example - make a note of the current file in the store.
+        // then when we save use that file path to update the file and what not.
+        // For now just set the contents
+        var str = fs.readFileSync(file.path, 'utf8')
+        console.log(str)
+        return false
+      }
+    },
     components: {
-      Hello
+      TextEditor,
+      PreviewPane
     }
   }
 </script>
 
 <style>
+
   html {
     height: 100%;
     padding: 0;
     margin: 0;
+    overflow: hidden;
   }
-  body, .page-wrap {
+
+  body,
+  .page-wrap {
     padding: 0;
     margin: 0;
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
     height: 100%;
@@ -32,22 +68,10 @@
 
   .text-editor,
   .rendered {
+    padding-top: 5rem;
     width: 50%;
     height: 100%;
-  }
-
-  .text-editor {
-    background: #233943;
-  }
-
-  #app {
-    margin-top: -100px;
-    max-width: 600px;
-    font-family: Helvetica, sans-serif;
-    text-align: center;
-  }
-  .logo {
-    width: 100px;
-    height: 100px
+    overflow: auto;
+    position: relative;
   }
 </style>
