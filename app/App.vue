@@ -28,6 +28,7 @@
       }
     },
     ready () {
+      openFile(this.state.currentFile, store)
       console.log('SETUP')
       var handler = document.getElementById('file-drop')
 
@@ -47,7 +48,7 @@
         var file = e.dataTransfer.files[0]
         console.log('File you dragged here is', file.path)
 
-        openFile(file, store)
+        openFile(file.path, store)
         // This is just an example - make a note of the current file in the store.
         // then when we save use that file path to update the file and what not.
         // For now just set the contents
