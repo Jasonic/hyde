@@ -1,5 +1,7 @@
 # hyde
 
+![Hyde](http://i.imgur.com/2kB1ceW.png)
+
 #### Basic Outline
 
 - Split realtime editor using Vue.js
