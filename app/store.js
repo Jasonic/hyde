@@ -11,10 +11,10 @@ var store = {
   // Need an updateContent and setContent function,
   // setContent bypasses the toggleFileSaved. Or just
   // add a parameter ?
-  setContent: function (str) {
+  setContent: function (str, options = {silent: false}) {
     this.state.content = str
 
-    if (this.state.fileSaved === true) {
+    if (this.state.fileSaved === true && options.silent === false) {
       this.toggleFileSaved()
     }
   },

@@ -38,8 +38,13 @@
       })
 
       editor.getSession().on('change', function (e) {
-        var str = editor.getValue()
-        store.setContent(str)
+        let silent = false
+        let str = editor.getValue()
+
+        // Programmatically updating editor content, no need to notify of the change and show unsaved icon.
+        if (!(editor.curOp && editor.curOp.command.name)) silent = true
+
+        store.setContent(str, { silent: silent })
       })
     }
   }

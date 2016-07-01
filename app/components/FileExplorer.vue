@@ -14,8 +14,7 @@
 <script>
     import store from '../store.js'
     import glob from 'glob'
-    import fs from 'fs'
-    import { updateEditor } from '../utils/utils.js'
+    import { openFile } from '../utils/utils.js'
 
     export default {
       ready () {
@@ -44,10 +43,8 @@
           })
         },
         loadFile (file) {
-          var str = fs.readFileSync(file, 'utf8')
-          store.setCurrentFile(file)
-          store.toggleFileExplorer()
-          updateEditor(str)
+          this.toggleSidebar()
+          openFile(file, store)
         }
       },
       watch: {

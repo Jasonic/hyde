@@ -4,7 +4,7 @@ const fs = require('fs.promised')
 export const updateEditor = function (str) {
   // Temp workaround to keep the editor in sync, this might recursive ?
   var editor = ace.edit('editor')
-  editor.setValue(str)
+  editor.setValue(str, -1)
 }
 
 export const openFile = function (path, store) {
@@ -13,7 +13,7 @@ export const openFile = function (path, store) {
   fs.readFile(path, 'utf8').then((contents) => {
     // TODO: Stop the animation here.
     updateEditor(contents)
-    store.setContent(contents)
+    store.setContent(contents, {silent: true})
     store.setCurrentFile(path)
     store.setCurrentDirectory(path.split('/').slice(0, -1).join('/'))
   })
