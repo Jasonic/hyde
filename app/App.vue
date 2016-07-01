@@ -5,6 +5,7 @@
         <current-file></current-file>
       </div>
       <preview-pane></preview-pane>
+      <save-status></save-status>
       <file-explorer></file-explorer>
     </div>
 </template>
@@ -12,12 +13,13 @@
 <script>
   import store from './store.js'
 
+  import {openFile} from './utils/utils.js'
+
   import TextEditor from './components/TextEditor'
   import PreviewPane from './components/Preview'
   import FileExplorer from './components/FileExplorer'
   import CurrentFile from './components/CurrentFile'
-
-  import fs from 'fs'
+  import SaveStatus from './components/SaveStatus'
 
   export default {
     data () {
@@ -44,15 +46,12 @@
         e.preventDefault()
         var file = e.dataTransfer.files[0]
         console.log('File you dragged here is', file.path)
-        console.log(file)
 
+        openFile(file, store)
         // This is just an example - make a note of the current file in the store.
         // then when we save use that file path to update the file and what not.
         // For now just set the contents
-        var str = fs.readFileSync(file.path, 'utf8')
-        store.setCurrentFile(file.path)
-        store.setCurrentDirectory(file.path.split('/').slice(0, -1).join('/'))
-        store.setContent(str)
+
         return false
       }
     },
@@ -60,7 +59,8 @@
       TextEditor,
       PreviewPane,
       FileExplorer,
-      CurrentFile
+      CurrentFile,
+      SaveStatus
     }
   }
 </script>

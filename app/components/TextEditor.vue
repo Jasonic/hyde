@@ -6,6 +6,7 @@
 
 <script>
   import store from '../store.js'
+  import { saveFile } from '../utils/utils.js'
   import ace from 'brace'
   import 'brace/mode/markdown'
   import 'brace/theme/ocean_dark'
@@ -18,6 +19,14 @@
       editor.getSession().setMode('ace/mode/markdown')
       editor.setTheme('ace/theme/ocean_dark')
       editor.setValue(store.state.content)
+
+      editor.commands.addCommand({
+        name: 'save file',
+        bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
+        exec: function (editor) {
+          saveFile(store.state.currentFile, editor.getValue(), store)
+        }
+      })
 
       editor.setOptions({
         enableMultiselect: true,
