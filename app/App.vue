@@ -1,13 +1,15 @@
 <template>
-    <div class="page-wrap" id="file-drop">
+  <div class="flex-extend">
+    <div v-bind:class="{ 'file-explorer-active': state.fileExplorerOpen }" class="page-wrap" id="file-drop">
       <div class="text-editor">
         <text-editor></text-editor>
         <current-file></current-file>
       </div>
       <preview-pane></preview-pane>
       <save-status></save-status>
-      <file-explorer></file-explorer>
     </div>
+    <file-explorer></file-explorer>
+  </div>
 </template>
 
 <script>
@@ -127,9 +129,8 @@
   }
 
   body,
-  .page-wrap {
-    padding: 0;
-    margin: 0;
+  .page-wrap,
+  .flex-extend {
     display: flex;
     width: 100%;
     align-items: center;

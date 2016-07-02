@@ -8,10 +8,12 @@
 - Built on electron
 - Designate a folder for your posts, load all markdown files in this directory into the app and keep it up to date.
 
-#### Extras:
+#### Roadmap:
 
-- [ ] Code highlighting and formatting (work on letting this be themed.)
-- [ ] Image support.
+- [x] Code highlighting and formatting (work on letting this be themed.)
+- [ ] Detect changes to files from other sources.
+- [ ] Switch from highlight.js to pygments, should speed up re-rendering.
+- [ ] Image button (option to host to imgur).
 - [ ] Various markdown flavours
 - [ ] Settings for font style (serif/sans-serif)
 - [ ] Settings for font size
@@ -21,6 +23,7 @@
 #### Todo:
 
 - [ ] Move dark-ocean theme out from the brace folder in node_modules into its own repo and publish on NPM
+
 
 #### Installing:
 
