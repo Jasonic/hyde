@@ -30,7 +30,9 @@
       }
     },
     ready () {
-      openFile(this.state.currentFile, store)
+      if (this.state.currentFile !== '') {
+        openFile(this.state.currentFile, store)
+      }
       console.log('SETUP')
       var handler = document.getElementById('file-drop')
 

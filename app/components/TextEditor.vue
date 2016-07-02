@@ -6,7 +6,7 @@
 
 <script>
   import store from '../store.js'
-  import { saveFile } from '../utils/utils.js'
+  import { saveFile, saveFileAs } from '../utils/utils.js'
   import ace from 'brace'
   import 'brace/mode/markdown'
   import 'brace/theme/ocean_dark'
@@ -25,6 +25,14 @@
         bindKey: {win: 'Ctrl-S', mac: 'Command-S'},
         exec: function (editor) {
           saveFile(store.state.currentFile, editor.getValue(), store)
+        }
+      })
+
+      editor.commands.addCommand({
+        name: 'save file as',
+        bindKey: {win: 'Ctrl-Alt-S', mac: 'Command-Alt-S'},
+        exec: function (editor) {
+          saveFileAs(editor.getValue(), store)
         }
       })
 

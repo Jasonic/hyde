@@ -1,12 +1,13 @@
 const ElectronSettings = require('electron-settings')
+const os = require('os')
 
 let settings = new ElectronSettings()
 
 let config = settings.get()
 
 if (Object.keys(config).length === 0) {
-  settings.set('currentFile', '/Users/hparton/Desktop/howdy.md')
-  settings.set('currentDirectory', '/Users/hparton/Desktop')
+  settings.set('currentFile', '')
+  settings.set('currentDirectory', os.homedir())
 }
 
 var store = {
@@ -15,13 +16,8 @@ var store = {
     currentFile: settings.get('currentFile'),
     currentDirectory: settings.get('currentDirectory'),
     fileExplorerOpen: false,
-    fileSaved: true,
-    fileSaving: false
+    fileSaved: true
   },
-  // TODO:
-  // Need an updateContent and setContent function,
-  // setContent bypasses the toggleFileSaved. Or just
-  // add a parameter ?
   setContent: function (str, options = {silent: false}) {
     this.state.content = str
 
@@ -42,9 +38,6 @@ var store = {
   },
   toggleFileSaved: function () {
     this.state.fileSaved = !this.state.fileSaved
-  },
-  toggleFileSaving: function () {
-    this.state.fileSaving = !this.state.fileSaving
   }
 }
 
