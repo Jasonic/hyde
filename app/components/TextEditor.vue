@@ -55,6 +55,7 @@
     background: #233943;
     color: #B1B9BD;
     font-size: 14px;
+    padding-right: 15px;
     overflow: hidden;
     font-family: 'Source Code Pro', monospace;
   }
