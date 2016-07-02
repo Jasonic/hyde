@@ -1,14 +1,11 @@
-const ElectronSettings = require('electron-settings')
+const Configstore = require('configstore')
+const pkg = require('./package.json')
 const os = require('os')
 
-let settings = new ElectronSettings()
-
-let config = settings.get()
-
-if (Object.keys(config).length === 0) {
-  settings.set('currentFile', '')
-  settings.set('currentDirectory', os.homedir())
-}
+let settings = new Configstore(pkg.name, {
+  currentFile: '',
+  currentDirectory: os.homedir()
+})
 
 var store = {
   state: {
