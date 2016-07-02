@@ -1,8 +1,19 @@
+const ElectronSettings = require('electron-settings')
+
+let settings = new ElectronSettings()
+
+let config = settings.get()
+
+if (Object.keys(config).length === 0) {
+  settings.set('currentFile', '/Users/hparton/Desktop/howdy.md')
+  settings.set('currentDirectory', '/Users/hparton/Desktop')
+}
+
 var store = {
   state: {
     content: '',
-    currentFile: '/Users/hparton/Desktop/howdy.md',
-    currentDirectory: '/Users/hparton/Desktop',
+    currentFile: settings.get('currentFile'),
+    currentDirectory: settings.get('currentDirectory'),
     fileExplorerOpen: false,
     fileSaved: true,
     fileSaving: false
@@ -20,9 +31,11 @@ var store = {
   },
   setCurrentFile: function (path) {
     this.state.currentFile = path
+    settings.set('currentFile', path)
   },
   setCurrentDirectory: function (path) {
     this.state.currentDirectory = path
+    settings.set('currentDirectory', path)
   },
   toggleFileExplorer: function () {
     this.state.fileExplorerOpen = !this.state.fileExplorerOpen
