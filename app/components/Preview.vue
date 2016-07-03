@@ -7,7 +7,21 @@
   import marked from 'marked'
   import hljs from 'highlight.js'
 
+  var renderer = new marked.Renderer()
+
+  renderer.listitem = function (text) {
+    if (/^\s*\[[x ]\]\s*/.test(text)) {
+      text = text
+      .replace(/^\s*\[ \]\s*/, '<input type="checkbox" class="task-list-item-checkbox" disabled="">')
+      .replace(/^\s*\[x\]\s*/, '<input type="checkbox" class="task-list-item-checkbox" checked="" disabled="">')
+      return '<li style="list-style: none">' + text + '</li>'
+    } else {
+      return '<li>' + text + '</li>'
+    }
+  }
+
   marked.setOptions({
+    renderer: renderer,
     breaks: true,
     smartypants: true,
     highlight: function (code) {
@@ -33,15 +47,34 @@
     font-weight: 300;
   }
 
+  .markdown-body {
+      box-sizing: border-box;
+      min-width: 200px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 45px;
+  }
 
+  b, strong {
+    font-weight: 700;
+  }
 
-    .markdown-body {
-        box-sizing: border-box;
-        min-width: 200px;
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 45px;
-    }
+  em, i {
+    font-style: italic;
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  .task-list-item-checkbox {
+    margin: 0.45em 0.2em 0.25em -1.6em !important;
+    position: absolute;
+  }
 
 /*
 Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
