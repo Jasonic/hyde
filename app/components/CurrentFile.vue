@@ -3,12 +3,13 @@
       <svg class="current-file__icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
         <path fill="#57686F" d="M85,33l-34.1,0l-9.5-9.4C41,23.2,40.5,23,40,23H15c-1.1,0-2,0.9-2,2v50c0,1.1,0.9,2,2,2h70c1.1,0,2-0.9,2-2  V35C87,33.9,86.1,33,85,33z M83,73H17V27h22.2l9.5,9.4c0.4,0.4,0.9,0.6,1.4,0.6L83,37V73z"/>
       </svg>
-      <a class="current-file__link" href="#" @click.prevent="toggleSidebar">{{state.currentFile | parentPath}}</a>
+      <a class="current-file__link" href="#" @click.prevent="toggleFileExplorer">{{state.currentFile | parentPath}}</a>
   </div>
 </template>
 
 <script>
     import store from '../store.js'
+    import { openFileDialog } from '../utils/utils.js'
 
     export default {
       data () {
@@ -23,8 +24,8 @@
         }
       },
       methods: {
-        toggleSidebar () {
-          store.toggleFileExplorer()
+        toggleFileExplorer () {
+          openFileDialog(store)
         }
       }
     }

@@ -8,7 +8,6 @@
       <preview-pane></preview-pane>
       <save-status></save-status>
     </div>
-    <file-explorer></file-explorer>
   </div>
 </template>
 
@@ -19,7 +18,6 @@
 
   import TextEditor from './components/TextEditor'
   import PreviewPane from './components/Preview'
-  import FileExplorer from './components/FileExplorer'
   import CurrentFile from './components/CurrentFile'
   import SaveStatus from './components/SaveStatus'
 
@@ -63,7 +61,6 @@
     components: {
       TextEditor,
       PreviewPane,
-      FileExplorer,
       CurrentFile,
       SaveStatus
     }

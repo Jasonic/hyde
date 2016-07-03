@@ -3,9 +3,16 @@ const fs = require('fs.promised')
 const {dialog} = require('electron').remote
 
 export const updateEditor = function (str) {
-  // Temp workaround to keep the editor in sync, this might recursive ?
   var editor = ace.edit('editor')
   editor.setValue(str, -1)
+}
+
+export const openFileDialog = function (store) {
+  dialog.showOpenDialog({
+    properties: ['openFile']
+  }, function (file) {
+    if (file) openFile(file[0], store)
+  })
 }
 
 export const openFile = function (path, store) {
