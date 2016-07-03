@@ -12,18 +12,18 @@
 
 - [x] Code highlighting and formatting (work on letting this be themed.)
 - [ ] Detect changes to files from other sources.
-- [ ] Switch from highlight.js to pygments, should speed up re-rendering.
 - [ ] Image button (option to host to imgur).
 - [ ] Various markdown flavours
-- [ ] Settings for font style (serif/sans-serif)
-- [ ] Settings for font size
+- [ ] Settings for font style (serif/sans-serif) / font size
 - [ ] Formatting buttons -> B (adds two asterisks to the start and end of highlighted text)
 - [ ] Option to edit some default yaml fields like Title, Date, Categories ?
+- [ ] Look into adding support for github features like checkboxes.
+- [ ] Move util functions to to use main process instead of render process, should help performance
+- [ ] Use sheet-style for window dialogs (saving/opening)
 
-#### Todo:
+#### Todo:
 
 - [ ] Move dark-ocean theme out from the brace folder in node_modules into its own repo and publish on NPM
-
 
 #### Installing:
 
