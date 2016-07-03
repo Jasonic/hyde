@@ -250,7 +250,7 @@ if (process.platform === 'darwin') {
   })
 
   // Window menu.
-  template[3].submenu.push({
+  template[4].submenu.push({
     type: 'separator'
   }, {
     label: 'Bring All to Front',
