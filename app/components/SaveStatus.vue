@@ -34,10 +34,10 @@
   }
 
   .status-indicator--unsaved {
-    background: rgb(205, 145, 54);
+    border: 1px solid rgb(35, 57, 67);
   }
 
   .status-indicator--saving {
-    background: red;
+    border: 1px solid red;
   }
 </style>
