@@ -2,7 +2,7 @@
   "name": "hyde",
   "productName": "Hyde",
   "version": "0.1.0",
-  "description": "Hyde - A realtime markdown editor.",
+  "description": "A realtime markdown editor built with Vue.js and Electron.",
   "author": "Harry Parton <hello@harryparton.co.uk>",
   "main": "background.js",
   "dependencies": {
