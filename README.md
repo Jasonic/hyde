@@ -9,13 +9,13 @@ Hyde is a realtime markdown editor built with [Vue.js](https://vuejs.org/) and [
 #### Roadmap:
 
 - [x] Code highlighting and formatting
-- [ ] Settings to pick highlighting theme (Editor + Preview)
-- [ ] Detect changes to files from other sources.
-- [ ] Image button (option to host to imgur).
-- [ ] Various markdown flavours
+- [ ] Settings for highlighting theme (Editor + Preview)
+- [ ] Toggle for GFM
 - [ ] Settings for font style (serif/sans-serif) / font size
 - [ ] Formatting buttons
 - [x] Look into adding support for github features like checkboxes.
+- [ ] Export options for HTML/PDF
+- [ ] Support for brew cask installation
 
 #### Todo:
 
