@@ -1,25 +1,24 @@
 import ace from 'brace'
+import store from '../store.js'
+
 const fs = require('fs.promised')
-const {dialog} = require('electron').remote
+const {dialog, BrowserWindow} = require('electron').remote
 
 export const updateEditor = function (str) {
   var editor = ace.edit('editor')
   editor.setValue(str, -1)
 }
 
-export const openFileDialog = function (store) {
-  dialog.showOpenDialog({
+export const openFileDialog = function () {
+  dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), {
     properties: ['openFile']
   }, function (file) {
-    if (file) openFile(file[0], store)
+    if (file) openFile(file[0])
   })
 }
 
-export const openFile = function (path, store) {
-  // TODO: Start an animation here ?
-
+export const openFile = function (path) {
   fs.readFile(path, 'utf8').then((contents) => {
-    // TODO: Stop the animation here.
     updateEditor(contents)
     store.setContent(contents, {silent: true})
     store.setCurrentFile(path)
@@ -30,13 +29,13 @@ export const openFile = function (path, store) {
   })
 }
 
-export const saveFile = function (path, contents, store) {
+export const saveFile = function (path, contents) {
   if (!path.length) {
-    saveFileAs(contents, store)
+    saveFileDialog(contents)
     return
   }
 
-  // Preemptivley assume we saved it.
+  // Preemptively assume we saved it.
   store.toggleFileSaved()
 
   fs.writeFile(path, contents).then(() => {
@@ -48,15 +47,15 @@ export const saveFile = function (path, contents, store) {
   })
 }
 
-export const saveFileAs = function (contents, store) {
-  dialog.showSaveDialog({defaultPath: store.state.currentDirectory, extensions: ['.md']}, function (fileName) {
+export const saveFileDialog = function (contents) {
+  dialog.showSaveDialog(BrowserWindow.getFocusedWindow(), {defaultPath: store.state.currentDirectory, extensions: ['.md']}, function (fileName) {
     // No file name if we cancel the dialog
     if (fileName === undefined) return
     // If we don't specify a file extension, assign it as a markdown file
     if (fileName.split('.').length <= 1) fileName += '.md'
-    // if (fileName.split('.').pop().length)
+
     store.setCurrentFile(fileName)
     store.setCurrentDirectory(fileName.split('/').slice(0, -1).join('/'))
-    saveFile(fileName, contents, store)
+    saveFile(fileName, contents)
   })
 }

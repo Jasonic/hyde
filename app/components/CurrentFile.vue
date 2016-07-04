@@ -25,7 +25,7 @@
       },
       methods: {
         toggleFileExplorer () {
-          openFileDialog(store)
+          openFileDialog()
         }
       }
     }
