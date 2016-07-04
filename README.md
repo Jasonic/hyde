@@ -20,7 +20,6 @@ Hyde is a realtime markdown editor built with [Vue.js](https://vuejs.org/) and [
 #### Todo:
 
 - [ ] Move dark-ocean theme out from the brace folder in node_modules into its own repo and publish on NPM
-- [ ] Move util functions to to use main process instead of render process, should help performance
 - [ ] Use sheet-style for window dialogs (saving/opening)
 
 ### Where can i get it ?
