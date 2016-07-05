@@ -47,6 +47,16 @@ export const saveFile = function (path, contents) {
   })
 }
 
+export const saveFileConfirmDialog = function (path, contents) {
+  dialog.showMessageBox({
+    title: 'Save your changes',
+    message: 'Do you wan\'t to save the changes you have made ?',
+    buttons: ['Yes', 'No']
+  }, function (index) {
+    if (index === 0) saveFile(path, contents)
+  })
+}
+
 export const saveFileDialog = function (contents) {
   dialog.showSaveDialog(BrowserWindow.getFocusedWindow(), {defaultPath: store.state.currentDirectory, extensions: ['.md']}, function (fileName) {
     // No file name if we cancel the dialog

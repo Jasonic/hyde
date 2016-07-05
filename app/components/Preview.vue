@@ -1,11 +1,12 @@
 <template>
-  <div class="rendered markdown-body" v-html="state.content | marked"></div>
+  <div class="rendered markdown-body" v-html="meta.__content | marked"></div>
 </template>
 
 <script>
   import store from '../store.js'
   import marked from 'marked'
   import hljs from 'highlight.js'
+  import frontMatter from 'yaml-front-matter'
 
   var renderer = new marked.Renderer()
 
@@ -32,7 +33,14 @@
   export default {
     data () {
       return {
-        state: store.state
+        state: store.state,
+        meta: {}
+      }
+    },
+    computed: {
+      meta: function () {
+        var metaData = frontMatter.loadFront(this.state.content)
+        return metaData
       }
     },
     filters: {
