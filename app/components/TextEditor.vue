@@ -9,7 +9,7 @@
   import { saveFile, saveFileDialog } from '../utils/utils.js'
   import ace from 'brace'
   import 'brace/mode/markdown'
-  import 'brace/theme/ocean_dark'
+  import 'spacegray-ace-theme'
   import 'brace/ext/spellcheck'
 
   export default {
@@ -17,7 +17,7 @@
       var editor = ace.edit('editor')
 
       editor.getSession().setMode('ace/mode/markdown')
-      editor.setTheme('ace/theme/ocean_dark')
+      editor.setTheme('ace/theme/space_gray')
       editor.setValue(store.state.content)
 
       editor.commands.addCommand({
