@@ -1,5 +1,5 @@
 <template>
-  <div class="rendered markdown-body" v-html="meta.__content | marked"></div>
+  <div class="rendered markdown-body" v-html="post.__content | marked"></div>
 </template>
 
 <script>
@@ -34,13 +34,13 @@
     data () {
       return {
         state: store.state,
-        meta: {}
+        post: {}
       }
     },
     computed: {
-      meta: function () {
-        var metaData = frontMatter.loadFront(this.state.content)
-        return metaData
+      post: function () {
+        var post = frontMatter.loadFront(this.state.content)
+        return post
       }
     },
     filters: {
