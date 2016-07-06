@@ -17,6 +17,7 @@ Hyde is a realtime markdown editor built with [Vue.js](https://vuejs.org/) and [
 - [ ] Export options for HTML/PDF
 - [ ] Support for brew cask installation
 
+
 ### Where can i get it ?
 Installers for all platforms can be found [here](https://github.com/hparton/hyde/releases). This has not been tested on any platform other than OSX. If you run into any problems, please post an issue and i'll take a look at it.
 
