@@ -26,8 +26,13 @@
     breaks: true,
     smartypants: true,
     highlight: function (code, lang) {
-      console.log(code, lang)
-      return Prism.highlight(code, Prism.languages[lang.toLowerCase()])
+      try {
+        return Prism.highlight(code, Prism.languages[lang])
+      } catch (e) {
+        // Catch and just suppress the error, its just not found
+        // the language or they spelled it wrong.
+        // not the end of the world.
+      }
     }
   })
 
