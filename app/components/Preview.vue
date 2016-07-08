@@ -5,7 +5,7 @@
 <script>
   import store from '../store.js'
   import marked from 'marked'
-  import hljs from 'highlight.js'
+  import Prism from 'prismjs'
   import frontMatter from 'yaml-front-matter'
 
   var renderer = new marked.Renderer()
@@ -25,8 +25,9 @@
     renderer: renderer,
     breaks: true,
     smartypants: true,
-    highlight: function (code) {
-      return hljs.highlightAuto(code).value
+    highlight: function (code, lang) {
+      console.log(code, lang)
+      return Prism.highlight(code, Prism.languages[lang.toLowerCase()])
     }
   })
 
@@ -83,88 +84,145 @@
     margin: 0.45em 0.2em 0.25em -1.6em !important;
     position: absolute;
   }
+/* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+apacheconf+bash+c+csharp+cpp+coffeescript+ruby+diff+git+haml+handlebars+jade+java+json+less+markdown+nginx+php+php-extras+python+jsx+sass+scss+sql+stylus+twig+typescript+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
 
-/*
-Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-license.org/
-*/
+code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  background: none;
+  text-shadow: 0 1px white;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
 
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #23241f;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
 }
 
-.hljs,
-.hljs-tag,
-.hljs-subst {
-  color: #f8f8f2;
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
 }
 
-.hljs-strong,
-.hljs-emphasis {
-  color: #a8a8a2;
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
 }
 
-.hljs-bullet,
-.hljs-quote,
-.hljs-number,
-.hljs-regexp,
-.hljs-literal,
-.hljs-link {
-  color: #ae81ff;
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
 }
 
-.hljs-code,
-.hljs-title,
-.hljs-section,
-.hljs-selector-class {
-  color: #a6e22e;
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
 }
 
-.hljs-strong {
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: slategray;
+}
+
+.token.punctuation {
+  color: #999;
+}
+
+.namespace {
+  opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #a67f59;
+  background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #07a;
+}
+
+.token.function {
+  color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90;
+}
+
+.token.important,
+.token.bold {
   font-weight: bold;
 }
-
-.hljs-emphasis {
+.token.italic {
   font-style: italic;
 }
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-name,
-.hljs-attr {
-  color: #f92672;
+.token.entity {
+  cursor: help;
 }
 
-.hljs-symbol,
-.hljs-attribute {
-  color: #66d9ef;
-}
-
-.hljs-params,
-.hljs-class .hljs-title {
-  color: #f8f8f2;
-}
-
-.hljs-string,
-.hljs-type,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-variable {
-  color: #e6db74;
-}
-
-.hljs-comment,
-.hljs-deletion,
-.hljs-meta {
-  color: #75715e;
-}
 
 @font-face {
   font-family: octicons-link;
