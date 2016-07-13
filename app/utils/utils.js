@@ -19,6 +19,8 @@ export const openFileDialog = function () {
 
 export const openFile = function (path) {
   fs.readFile(path, 'utf8').then((contents) => {
+    // Start watching the file for changes - if there are any then prompt if the user wants to update to the new changes.
+    // https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener
     updateEditor(contents)
     store.setContent(contents, {silent: true})
     store.setCurrentFile(path)
@@ -36,7 +38,9 @@ export const saveFile = function (path, contents) {
   }
 
   // Preemptively assume we saved it.
-  store.toggleFileSaved()
+  if (store.state.fileSaved !== true) {
+    store.toggleFileSaved()
+  }
 
   fs.writeFile(path, contents).then(() => {
     console.log('File Saved: ' + path)
