@@ -9,6 +9,12 @@ export const updateEditor = function (str) {
   editor.setValue(str, -1)
 }
 
+export const resetEditor = function () {
+  var editor = ace.edit('editor')
+  editor.setValue('', -1)
+  editor.getSession().setUndoManager(new ace.UndoManager())
+}
+
 export const openFileDialog = function () {
   dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), {
     properties: ['openFile']
@@ -21,6 +27,7 @@ export const openFile = function (path) {
   fs.readFile(path, 'utf8').then((contents) => {
     // Start watching the file for changes - if there are any then prompt if the user wants to update to the new changes.
     // https://nodejs.org/api/fs.html#fs_fs_watchfile_filename_options_listener
+    resetEditor()
     updateEditor(contents)
     store.setContent(contents, {silent: true})
     store.setCurrentFile(path)
